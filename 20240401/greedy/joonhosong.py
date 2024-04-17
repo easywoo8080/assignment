@@ -127,9 +127,7 @@ b = input()
 c = float(a) + float(b)
 print(c)
 
-
 # 27번
-
 a = input()
 n = int(a)
 print('%x'% n)
@@ -148,3 +146,34 @@ print("%o"%a)
 n=input() 
 n=ord(n) 
 print(n)
+
+# 31번
+c=int(input())
+print(chr(c))
+
+# 32번
+i=int(input())
+print(-i)
+
+# 33번
+c=ord(input())
+print(chr(c+1))
+
+# 34번
+a, b = input().split()
+c = int(a) - int(b)
+print(c)
+
+# 35번
+c, d = input().split()
+m = float(c) * float(d)
+print(m)
+
+# 36번
+w, n = input().split()
+print(w*int(n))
+
+# 37번
+n = input()
+s = input()
+print(int(n)*s)
