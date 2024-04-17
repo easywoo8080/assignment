@@ -338,7 +338,12 @@ print((c and d) or ((not c) and (not d)))
 a, b = input().split()
 print(not(bool(int(a))) and not(bool(int(b))))
 
-# 59번 ~ing
+# 59번
 a = int(input())
 print(~a)
 
+# 60번
+a, b = input().split()
+a = int(a)
+b = int(b)
+print(int(a & b))
