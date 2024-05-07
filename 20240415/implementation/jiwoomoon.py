@@ -46,7 +46,7 @@ n = int(input("n 값을 입력하세요: "))
 
 # DP를 사용하지 않는 경우 실행 시간 측정
 start_time = time.time()
-result_no_dp = fibo_recursive(n)
+result_no_dp = fibo_recursive(n+1)
 end_time = time.time()
 execution_time_no_dp = end_time - start_time
 
