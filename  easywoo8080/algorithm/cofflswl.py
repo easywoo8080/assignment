@@ -30,19 +30,6 @@ def solution(answers):
         , [2, 1, 2, 3, 2, 4, 2, 5]
         , [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
     ]
-<<<<<<< HEAD
-    
-    for i in answers:
-        for j in supoja:
-            # print('jj',j[0], i)
-            # print(j[i%len(j)])
-            j_val = j[i%len(j)]
-            if( i ==  j_val):
-                # answer[j] += 1
-                print(i)
-    return answer
-
-=======
     # print(supoja)
     for i, anr in enumerate(answers):
         for j, anrs in enumerate(supoja):
@@ -65,4 +52,3 @@ def solution(answers):
     return [i + 1 for i, score in enumerate(answer) if score == max_stu]
 
 print( solution([3,3,3]))
->>>>>>> 55632b7da8196eff22d5be417b57411bfdf3dc12
