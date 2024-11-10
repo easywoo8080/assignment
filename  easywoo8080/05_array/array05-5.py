@@ -43,7 +43,7 @@ def solution(arr1, arr2):
                 print('arr2 : ',arr2[k][j])
 
                 result[i][j] += arr1[i][k] * arr2[k][j]
-                print(result[i][j])
+                # print(result[i][j])
     return result
 
 
