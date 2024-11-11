@@ -1,5 +1,5 @@
 # 07 방문 길이 **
-test_case = ["ULURRDLLU", "ULURRDLLD"]
+test_case = ["ULURRDLLU", "ULURRDLLD", "ULLLLLLL"]
 
 def solution(dirs):
     answer = set()
@@ -28,17 +28,15 @@ def solution(dirs):
         # print( x + move[char][0] )
         move_x = max(min(x + move[char][0], limit[char]), -limit[char])
         move_y = max(min(y + move[char][1], limit[char]), -limit[char])
-        print((x,y), (move_x, move_y))
+        # print((x,y), (move_x, move_y))
         load = {(x,y), (move_x, move_y)}
-        # load = {tuple(sorted([(x, y), (move_x, move_y)]))}
-        # print(load)
         answer.add(frozenset(load))
 
-         
+        
         x, y = move_x, move_y
     # print(answer)
-    for path in answer:
-        print(list(path))  # 각 경로를 리스트로 출력
+    # for path in answer:
+        # print(list(path))  # 각 경로를 리스트로 출력
     return len(answer)
 
 
@@ -67,6 +65,8 @@ def solution(dirs):
     
     for move in dirs:
         nx, ny = x + moves[move][0], y + moves[move][1]
+
+        print('nx : ',x,y , nx , ny)
         if -5 <= nx <= 5 and -5 <= ny <= 5:
             path = {(x, y), (nx, ny)}
             visited.add(frozenset(path))
@@ -74,8 +74,8 @@ def solution(dirs):
 
     return len(visited)
 
-# # 테스트
-# print(solution("ULURRDLLU"))  # 출력: 7
+# 테스트
+print(solution(test_case[1]))  # 출력: 7
 
 
 
