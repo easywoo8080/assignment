@@ -1,5 +1,5 @@
 # 07 방문 길이 **
-test_case = ["ULURRDLLU", "ULURRDLLD", "ULLLLLLL"]
+test_case = ["ULURRDLLU", "LULLLLLLU", "ULLLLLLL"]
 
 def solution(dirs):
     answer = set()
@@ -26,15 +26,17 @@ def solution(dirs):
     for char in dirs:
         # print(char)  # 각 문자를 출력
         # print( x + move[char][0] )
-        move_x = max(min(x + move[char][0], limit[char]), -limit[char])
-        move_y = max(min(y + move[char][1], limit[char]), -limit[char])
-        # print((x,y), (move_x, move_y))
-        load = {(x,y), (move_x, move_y)}
-        answer.add(frozenset(load))
+        move_x = x + move[char][0]
+        move_y = y + move[char][1]
+        if( -limit[char] <= move_x <= limit[char] and -limit[char] <= move_y <= limit[char]):
+            # print((x,y), (move_x, move_y))
+            load = {(x,y, move_x, move_y)}
+            # print(load)
+            answer.add(frozenset(load))
+            x, y = move_x, move_y
 
-        
-        x, y = move_x, move_y
     # print(answer)
+    # print('')
     # for path in answer:
         # print(list(path))  # 각 경로를 리스트로 출력
     return len(answer)
