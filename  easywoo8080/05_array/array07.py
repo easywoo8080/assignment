@@ -1,5 +1,5 @@
 # 07 방문 길이 **
-test_case = ["ULURRDLLU", "LULLLLLLU", "ULLLLLLL"]
+test_case = ["ULURRDLLU", "LULLLLLLU", "ULLLLLLL", "LLLLLLUURRRDDLURL"]
 
 def solution(dirs):
     answer = set()
@@ -10,9 +10,9 @@ def solution(dirs):
     #이동 규칙
     move = {
         'U' : (0, 1)
-        ,'R' : (1, 0)
         ,'D' : (0, -1)
         ,'L' : (-1, 0)
+        ,'R' : (1, 0)
     }
 
     #리미트 한도
@@ -22,19 +22,22 @@ def solution(dirs):
         ,'D':5
         ,'L':5
     }
-
+    cnt = 0
     for char in dirs:
-        # print(char)  # 각 문자를 출력
+        # print(char)  
         # print( x + move[char][0] )
         move_x = x + move[char][0]
         move_y = y + move[char][1]
+        
+        
         if( -limit[char] <= move_x <= limit[char] and -limit[char] <= move_y <= limit[char]):
-            # print((x,y), (move_x, move_y))
-            load = {(x,y, move_x, move_y)}
+            # print(f'char : {char} {cnt}' , (x,y), (move_x, move_y))
+            load = {(x,y), (move_x, move_y)}
             # print(load)
             answer.add(frozenset(load))
             x, y = move_x, move_y
 
+            cnt += 1
     # print(answer)
     # print('')
     # for path in answer:
@@ -44,7 +47,7 @@ def solution(dirs):
 
 
 
-print( solution(test_case[1]))
+print( solution(test_case[3]))
 # test_case의 각 요소를 solution 함수에 전달
 # print(list(map(solution, test_case)))
 
@@ -54,30 +57,30 @@ print( solution(test_case[1]))
 
 
 
-def solution(dirs):
-    visited = set()
-    x, y = 0, 0
+# def solution(dirs):
+#     visited = set()
+#     x, y = 0, 0
     
-    moves = {
-        'U': (0, 1),
-        'D': (0, -1),
-        'L': (-1, 0),
-        'R': (1, 0)
-    }
+#     moves = {
+#         'U': (0, 1),
+#         'D': (0, -1),
+#         'L': (-1, 0),
+#         'R': (1, 0)
+#     }
     
-    for move in dirs:
-        nx, ny = x + moves[move][0], y + moves[move][1]
+#     for move in dirs:
+#         nx, ny = x + moves[move][0], y + moves[move][1]
 
-        print('nx : ',x,y , nx , ny)
-        if -5 <= nx <= 5 and -5 <= ny <= 5:
-            path = {(x, y), (nx, ny)}
-            visited.add(frozenset(path))
-            x, y = nx, ny
+#         print('nx : ',x,y , nx , ny)
+#         if -5 <= nx <= 5 and -5 <= ny <= 5:
+#             path = {(x, y), (nx, ny)}
+#             visited.add(frozenset(path))
+#             x, y = nx, ny
 
-    return len(visited)
+#     return len(visited)
 
-# 테스트
-print(solution(test_case[1]))  # 출력: 7
+# # 테스트
+# print(solution(test_case[1]))  # 출력: 7
 
 
 
