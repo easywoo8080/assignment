@@ -13,21 +13,21 @@ class Solution(Problem):
         # Problem.test_case.append('())')
     
     
-    stack = []
+    # stack = []
 
     def solution(self):
 
         # print(self.test_case)  # self로 부모 클래스의 test_case에 접근
-        stack = self.stack
+        stack = []
         test_case = self.test_case[1]
 
 
         print(test_case)
-        for str in test_case:
-            # print(str)
-            if( str == "("):
-                stack.append(str)
-            elif( str == ")"):
+        for char in test_case:
+            # print(char)
+            if( char == "("):
+                stack.append(char)
+            elif( char == ")"):
                 if not stack :
                     return False
                 else:

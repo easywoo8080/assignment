@@ -7,8 +7,8 @@ class Problem:
 
 class Solution(Problem):
 
-    def solution(self, test_case): 
-        answer = None
+    def solution(self, param): 
+        answer = []
         return answer
 
 # Object creation and method call (객체 생성 및 메서드 호출)
