@@ -1,9 +1,9 @@
 # 전역 변수로 선언
 test_case = [
-            '[](){}'
-             ,"}]()[{"
-             ,"[)(]"
-             ,"}}}"
+            '[)(]'
+            , '[](){}'
+            , '}]()[{'
+            , '}}}'
              ]
 
 
@@ -38,19 +38,25 @@ class Solution(Problem):
         stack = []
         queue_as_list = list(param)
         
-        
+
+        matching_bracket = {')': '(', '}': '{', ']': '['}  # 키-값 한 쌍을 생성
+
         # print( queue_as_list )
-        # print(test_case)
         for char in queue_as_list:
             # print(char)
             if( char in "({[" ):
                 stack.append(char)
             elif( char in ")}]" ):
-                if not stack :
+
+                # print(stack)
+
+                if not stack or stack[-1] != matching_bracket[char]:
                     return False
                 else:
                     stack.pop()
-            # print(stack)
+
+                
+        
         if stack:
             return False
         else:
