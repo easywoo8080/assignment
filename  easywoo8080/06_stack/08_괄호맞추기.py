@@ -8,42 +8,39 @@ class Problem:
     '''
 
 class Solution(Problem):
-    # def __init__(self):
-        # 부모 클래스의 test_case에 항목을 추가
-        # Problem.test_case.append('())')
-    
-    
     # stack = []
 
     def solution(self):
 
-        # print(self.test_case)  # self로 부모 클래스의 test_case에 접근
+        
         stack = []
         test_case = self.test_case[1]
 
+       
 
-        print(test_case)
+        # print(test_case)
         for char in test_case:
             # print(char)
+            # {stack}에 (이면 삽입 )이면 pop를 함
             if( char == "("):
                 stack.append(char)
             elif( char == ")"):
+                # 만약 {stack}에 아무것도 존재하지 않으면 False
                 if not stack :
                     return False
                 else:
                     stack.pop()
             # print(stack)
+        # 마지막으로 stack에 뭔가 남아있으면 Fasle 아니면 Ture
         if stack:
             return False
         else:
             return True
 
 
-        # self.stack.append(1) 
+       
 
 
 
-
-# 객체 생성 및 메서드 호출
 sol = Solution()
-print(sol.solution())  # ['(((())))(())', '(()())', 'dfd'] 출력
+print(sol.solution())  
