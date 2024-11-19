@@ -1,5 +1,5 @@
 test_case = []  # 전역 변수로 선언
-test_case.append([1,2,3,2,3])
+test_case.append([1,2,3,3,2,3])
 
 class Problem:
     '''
@@ -18,17 +18,33 @@ class Problem:
 class Solution(Problem):
 
     def solution(self, param): 
-        answer = []
-        stack = []
-        print(param)
-        for n in param:
-            print(n)
-            stack.append(n)
-            if stack:
-                if n <= stack[-1]:
-                    answer+=1
-            else:
-                '몰겟땅'
+         
+        length = len(param)
+
+        answer = [0] * length
+        # print(answer)
+        stack = [0]
+        # print(param)
+
+        for i in range(1, length):
+            print(f'{param[i]} and {param[stack[-1]]} = {param[i] < param[stack[-1]]}')
+            while stack and param[i] < param[stack[-1]]:
+                key = stack.pop()
+                # print(f'{i} : {key}')
+                answer[key] = i - key
+            stack.append(i)
+
+        print(stack)
+
+
+        # for n in param:
+        #     # print(n)
+        #     stack.append(n)
+        #     if stack:
+        #         if n <= stack[-1]:
+        #             answer+=1
+        #     else:
+        #         '몰겟땅'
 
         return answer
 
