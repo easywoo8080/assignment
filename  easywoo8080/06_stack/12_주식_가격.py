@@ -34,7 +34,7 @@ class Solution(Problem):
                 answer[key] = i - key
             stack.append(i)
 
-        print(stack)
+        # print(stack)
 
 
         # for n in param:
@@ -45,6 +45,13 @@ class Solution(Problem):
         #             answer+=1
         #     else:
         #         '몰겟땅'
+
+        # 이제 stack에 있는 값들은 마지막까지 떨어지지 않는 값들이므로 순서대로 전체길이만큼 넣으면 됨
+        # print(stack)
+
+        while stack:
+            key = stack.pop()
+            answer[key] = length - key - 1
 
         return answer
 
