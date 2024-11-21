@@ -18,6 +18,8 @@ class Solution(Problem):
         # stack = [1, 0, 2, 0, 3]
 
         # stack = list(filter(lambda x: x != 0, board))
+        # |||가 아니라 ≡ 였네
+        # stack = [[x for x in row if x != 0] for row in board]
         stack = [[row[i] for row in board if row[i] != 0] for i in range(len(board[0]))]
         # result = []  # 테스트용 변수
 
@@ -53,7 +55,7 @@ class Solution(Problem):
                 top = stack[index].pop()
                 if answer and answer[-1] == top:
                     # print(stack[index][-1])
-                    answer.pop()
+                    answer.pop(0)
                     # stack[index].pop()
                     result += 2
                 else:
@@ -65,28 +67,32 @@ class Solution(Problem):
         # answer = len(answer)
         return result
 
-# to GPT
-# def solution(board, moves):
-#     # stack을 열(column) 기준으로 초기화
-#     stack = [[row[i] for row in board if row[i] != 0] for i in range(len(board[0]))]
-#     print("Initialized stack:", stack)  # 디버깅용 출력
+# to gpt
+    # def solution(self, param):
 
-#     basket = []  # 뽑은 인형을 담는 바구니
-#     result = 0  # 사라진 인형의 수
+    #     board = param[0]
+    #     moves = param[1]
+    #     # stack을 열(column) 기준으로 초기화
+    #     stack = [[row[i] for row in board if row[i] != 0] for i in range(len(board[0]))]
+    #     print("Initialized stack:", stack)  # 디버깅용 출력
 
-#     for move in moves:
-#         index = move - 1  # 1-based index를 0-based index로 변환
-#         if stack[index]:  # 해당 열에 인형이 있는 경우
-#             top = stack[index].pop(0)  # 가장 위의 인형을 뽑음
-#             if basket and basket[-1] == top:  # 바구니의 마지막 인형과 동일한 경우
-#                 basket.pop()  # 마지막 인형 제거
-#                 result += 2  # 인형 2개가 사라짐
-#             else:
-#                 basket.append(top)  # 바구니에 추가
-#         print("Current basket:", basket)  # 디버깅용 출력
-#         print("Current stack:", stack)  # 디버깅용 출력
 
-#     return result
+    #     basket = []  # 뽑은 인형을 담는 바구니
+    #     result = 0  # 사라진 인형의 수
+
+    #     for move in moves:
+    #         index = move - 1  # 1-based index를 0-based index로 변환
+    #         if stack[index]:  # 해당 열에 인형이 있는 경우
+    #             top = stack[index].pop(0)  # 가장 위의 인형을 뽑음
+    #             if basket and basket[-1] == top:  # 바구니의 마지막 인형과 동일한 경우
+    #                 basket.pop()  # 마지막 인형 제거
+    #                 result += 2  # 인형 2개가 사라짐
+    #             else:
+    #                 basket.append(top)  # 바구니에 추가
+    #         print("Current basket:", basket)  # 디버깅용 출력
+    #         print("Current stack:", stack)  # 디버깅용 출력
+
+    #     return result
 
 # Object creation and method call (객체 생성 및 메서드 호출)
 sol = Solution()
