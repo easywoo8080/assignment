@@ -1,7 +1,7 @@
 test_case = []  # 전역 변수로 선언
 test_case.append(10)
-test_case.append(27)
-test_case.append(12345)
+# test_case.append(27)
+# test_case.append(12345)
 
 class Problem:
     '''

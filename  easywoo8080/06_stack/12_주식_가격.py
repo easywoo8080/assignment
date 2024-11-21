@@ -43,13 +43,25 @@ class Solution(Problem):
          
             stack.append(i)
 
+        # print(stack)
+
+
+        # for n in param:
+        #     # print(n)
+        #     stack.append(n)
+        #     if stack:
+        #         if n <= stack[-1]:
+        #             answer+=1
+        #     else:
+        #         '몰겟땅'
 
         # 이제 stack에 있는 값들은 마지막까지 떨어지지 않는 값들이므로 순서대로 전체길이만큼 넣으면 됨
-        print(stack)
+        # print(stack)
 
         while stack:
             key = stack.pop()
             answer[key] = length - key - 1
+
         return answer
 
 # Object creation and method call (객체 생성 및 메서드 호출)
