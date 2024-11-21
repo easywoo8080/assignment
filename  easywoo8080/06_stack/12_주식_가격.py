@@ -1,5 +1,5 @@
 test_case = []  # 전역 변수로 선언
-test_case.append([1,2,3,3,2,3])
+test_case.append([2,2,3,4,5,4])
 
 class Problem:
     '''
@@ -27,25 +27,29 @@ class Solution(Problem):
         # print(param)
 
         for i in range(1, length):
-            print(f'{param[i]} and {param[stack[-1]]} = {param[i] < param[stack[-1]]}')
+            # print(f'{param[i]} and {param[stack[-1]]} = {param[i] < param[stack[-1]]}')
+
+            """
+                i번째 param이랑 stack의 마지막 값이랑 비교하여 stack의 마지막 값이 param보다 작으면 삭제하는걸 반복 
+                이는 i 시점 기준 마지막까지 가격 하락이 이루어 지지 않는 값을 산출해낸다.
+            """
+            
             while stack and param[i] < param[stack[-1]]:
                 key = stack.pop()
                 # print(f'{i} : {key}')
+                # stack의 값이 떨어져 팝으로 key 산출 해당 값은 i번째 값이므로 순서를 알아 낼 수 있음
+                # answer의 해당 번지수(key)에 지금 순서 - pop된 순서의 값을 넣어서 얼마동안 지속되었는지 값을 알아 낼 수 있음
                 answer[key] = i - key
+         
             stack.append(i)
 
+
+        # 이제 stack에 있는 값들은 마지막까지 떨어지지 않는 값들이므로 순서대로 전체길이만큼 넣으면 됨
         print(stack)
 
-
-        # for n in param:
-        #     # print(n)
-        #     stack.append(n)
-        #     if stack:
-        #         if n <= stack[-1]:
-        #             answer+=1
-        #     else:
-        #         '몰겟땅'
-
+        while stack:
+            key = stack.pop()
+            answer[key] = length - key - 1
         return answer
 
 # Object creation and method call (객체 생성 및 메서드 호출)
