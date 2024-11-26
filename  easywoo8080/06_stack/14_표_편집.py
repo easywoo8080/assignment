@@ -21,27 +21,21 @@ class Solution(Problem):
         command = cmd
 
         addrs = list(range(num))
-        # print('addr ', addrs)
-
+        print(addrs)
 
         delete = []
 
         for text in command:
             parts = text.split()
-            # print(parts)
-            # print( key)
             if parts[0] == "U":
-                # print("Matched U", k)
                 key = max(key - int(parts[1]), 0)
-                # print('key ', key)
 
             elif parts[0] == "D":
-                # print("Matched A")
                 key = min(key + int(parts[1]), num-1)
 
             elif parts[0] == "C":
+                basket[key] = 'X'
                 delete.append([key, addrs.pop(key)]) if addrs else None
-
                 if key >= num:
                     key -= 1
                 num -= 1
@@ -49,13 +43,13 @@ class Solution(Problem):
             elif parts[0] == "Z":
                 repair = delete.pop() if delete else None
                 addrs.insert(key, repair)
-                # addrs[repair[0]] =  repair[1]
+                basket[key] = 'O'
                 num += 1
 
 
-        for key in delete:
-            # print(key)
-            basket[key[0]] = 'X'
+        # for key in delete:
+        #     # print(key)
+        #     basket[key[0]] = 'X'
 
         answer = "".join(basket)
         # print(f'addrs : {addrs}')
