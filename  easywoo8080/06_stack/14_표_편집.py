@@ -27,24 +27,67 @@ class Solution(Problem):
 
         for text in command:
             parts = text.split()
-            if parts[0] == "U":
-                key = max(key - int(parts[1]), 0)
+            steps = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 0
 
-            elif parts[0] == "D":
-                key = min(key + int(parts[1]), num-1)
+            move = parts[0]
 
-            elif parts[0] == "C":
+            step = 0
+            if move == "U":
+                # key = max(key - steps, 0)
+                while step < steps:
+                    key = max(key - 1, 0)
+                    # print('step', step)
+
+                    if basket[key] == 'X':
+                        # print('end step')
+
+                        
+
+                        if key == 0:break 
+                        continue  # step 값을 유지하고 루프를 반복
+                    if key == 0:break 
+                    step += 1  # step 증가는 조건을 통과했을 때만
+                    
+
+
+
+            elif move == "D":
+                # key = min(key + steps, num-1)
+                key = min(key + 1 , num-1)
+                
+                while step < steps:
+                    key = max(key - 1, 0)
+                    # print('step', step)
+
+                    if basket[key] == 'X':
+                        # print('end step')
+
+                        
+
+                        if key == 0:break 
+                        continue  # step 값을 유지하고 루프를 반복
+                    if key == 0:break 
+                    step += 1  # step 증가는 조건을 통과했을 때만
+                
+
+            elif move == "C":
                 basket[key] = 'X'
-                delete.append([key, addrs.pop(key)]) if addrs else None
-                if key >= num:
-                    key -= 1
-                num -= 1
+                delete.append(key)
+                if key == num-1:key-=1
+                
+                # if key >= num:
+                #     key -= 1
+                # num -= 1
 
-            elif parts[0] == "Z":
+            elif move == "Z":
                 repair = delete.pop() if delete else None
-                addrs.insert(key, repair)
-                basket[key] = 'O'
-                num += 1
+
+                # addrs.insert(key, repair)
+                print(repair)
+                print(basket[repair])
+                basket[repair] = 'O'
+                # num += 1
+            # print(basket)
 
 
         # for key in delete:
