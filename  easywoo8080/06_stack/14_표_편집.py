@@ -40,9 +40,6 @@ class Solution(Problem):
 
                     if basket[key] == 'X':
                         # print('end step')
-
-                        
-
                         if key == 0:break 
                         continue  # step 값을 유지하고 루프를 반복
                     if key == 0:break 
@@ -54,21 +51,19 @@ class Solution(Problem):
             elif move == "D":
                 # key = min(key + steps, num-1)
                 key = min(key + 1 , num-1)
-                
+                print('key ',key)
+                print('steps ',steps)
+
                 while step < steps:
-                    key = max(key - 1, 0)
+                    key = max(key + 1, 0)
                     # print('step', step)
 
                     if basket[key] == 'X':
                         # print('end step')
-
-                        
-
                         if key == 0:break 
                         continue  # step 값을 유지하고 루프를 반복
                     if key == 0:break 
                     step += 1  # step 증가는 조건을 통과했을 때만
-                
 
             elif move == "C":
                 basket[key] = 'X'
@@ -83,7 +78,9 @@ class Solution(Problem):
                 repair = delete.pop() if delete else None
 
                 # addrs.insert(key, repair)
-                print(repair)
+                print('delete', delete)
+                print('repair', repair)
+                print('basket', basket)
                 print(basket[repair])
                 basket[repair] = 'O'
                 # num += 1
