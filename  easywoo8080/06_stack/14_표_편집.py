@@ -16,12 +16,13 @@ class Solution(Problem):
         # print(n)
 
         basket = ["O"] * n
-        num = n
-        key = k
-        command = cmd
+        num = n # 전체 크기
+        key = k # 현재 위치
+        command = cmd # 명령어
 
-        addrs = list(range(num))
-        print(addrs)
+
+        # addrs = list(range(num))
+        # print(addrs)
 
         delete = []
 
@@ -33,69 +34,32 @@ class Solution(Problem):
 
             step = 0
             if move == "U":
-                # key = max(key - steps, 0)
                 while step < steps:
                     key = max(key - 1, 0)
-                    # print('step', step)
-
                     if basket[key] == 'X':
-                        # print('end step')
-
-                        
-
-                        if key == 0:break 
                         continue  # step 값을 유지하고 루프를 반복
                     if key == 0:break 
                     step += 1  # step 증가는 조건을 통과했을 때만
-                    
-
-
 
             elif move == "D":
-                # key = min(key + steps, num-1)
-                key = min(key + 1 , num-1)
-                
                 while step < steps:
-                    key = max(key - 1, 0)
-                    # print('step', step)
-
+                    key = min(key + 1, num-1)
                     if basket[key] == 'X':
-                        # print('end step')
-
-                        
-
-                        if key == 0:break 
                         continue  # step 값을 유지하고 루프를 반복
                     if key == 0:break 
                     step += 1  # step 증가는 조건을 통과했을 때만
-                
-
             elif move == "C":
                 basket[key] = 'X'
                 delete.append(key)
-                if key == num-1:key-=1
-                
-                # if key >= num:
-                #     key -= 1
-                # num -= 1
+                if key == num-1:
+                    key-=1
+                num -= 1
 
             elif move == "Z":
                 repair = delete.pop() if delete else None
-
-                # addrs.insert(key, repair)
-                print(repair)
-                print(basket[repair])
                 basket[repair] = 'O'
-                # num += 1
-            # print(basket)
-
-
-        # for key in delete:
-        #     # print(key)
-        #     basket[key[0]] = 'X'
 
         answer = "".join(basket)
-        # print(f'addrs : {addrs}')
         return answer
 
 # Object creation and method call (객체 생성 및 메서드 호출)
