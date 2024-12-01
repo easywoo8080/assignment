@@ -52,10 +52,11 @@ class Solution(Problem):
                 # key = min(key + steps, num-1)
                 key = min(key + 1 , num-1)
                 print('key ',key)
+                print('num ',num)
                 print('steps ',steps)
 
                 while step < steps:
-                    key = max(key + 1, 0)
+                    key = min(key + 1, num - 1)
                     # print('step', step)
 
                     if basket[key] == 'X':
@@ -72,7 +73,7 @@ class Solution(Problem):
                 
                 # if key >= num:
                 #     key -= 1
-                # num -= 1
+                num -= 1
 
             elif move == "Z":
                 repair = delete.pop() if delete else None
