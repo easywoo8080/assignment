@@ -37,11 +37,17 @@ class Solution(Problem):
                 while step < steps:
                     key = max(key - 1, 0)
                     if basket[key] == 'X':
+<<<<<<< HEAD
+=======
+                        # print('end step')
+                        if key == 0:break 
+>>>>>>> 1210bb66daf414bb65aee8cce61da31bbb0fb940
                         continue  # step 값을 유지하고 루프를 반복
                     if key == 0:break 
                     step += 1  # step 증가는 조건을 통과했을 때만
 
             elif move == "D":
+<<<<<<< HEAD
                 while step < steps:
                     key = min(key + 1, num-1)
                     if basket[key] == 'X':
@@ -53,10 +59,45 @@ class Solution(Problem):
                 delete.append(key)
                 if key == num-1:
                     key-=1
+=======
+                # key = min(key + steps, num-1)
+                key = min(key + 1 , num-1)
+                print('key ',key)
+                print('num ',num)
+                print('steps ',steps)
+
+                while step < steps:
+                    key = min(key + 1, num - 1)
+                    # print('step', step)
+
+                    if basket[key] == 'X':
+                        # print('end step')
+                        if key == 0:break 
+                        continue  # step 값을 유지하고 루프를 반복
+                    if key == 0:break 
+                    step += 1  # step 증가는 조건을 통과했을 때만
+
+            elif move == "C":
+                basket[key] = 'X'
+                delete.append(key)
+                if key == num-1:key-=1
+                
+                # if key >= num:
+                #     key -= 1
+>>>>>>> 1210bb66daf414bb65aee8cce61da31bbb0fb940
                 num -= 1
 
             elif move == "Z":
                 repair = delete.pop() if delete else None
+<<<<<<< HEAD
+=======
+
+                # addrs.insert(key, repair)
+                print('delete', delete)
+                print('repair', repair)
+                print('basket', basket)
+                print(basket[repair])
+>>>>>>> 1210bb66daf414bb65aee8cce61da31bbb0fb940
                 basket[repair] = 'O'
 
         answer = "".join(basket)
