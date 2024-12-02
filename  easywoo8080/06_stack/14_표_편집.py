@@ -1,6 +1,6 @@
 test_case = []  # 전역 변수로 선언
 test_case.append([8, 2, ["D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z"]])
-test_case.append([8, 2, ["D 2","C","U 3","C","D 4","C","U 2","Z","Z","U 1","C"]])
+# test_case.append([8, 2, ["D 2","C","U 3","C","D 4","C","U 2","Z","Z","U 1","C"]])
 # test_case.append(27)
 # test_case.append(12345)
 
@@ -37,17 +37,11 @@ class Solution(Problem):
                 while step < steps:
                     key = max(key - 1, 0)
                     if basket[key] == 'X':
-<<<<<<< HEAD
-=======
-                        # print('end step')
-                        if key == 0:break 
->>>>>>> 1210bb66daf414bb65aee8cce61da31bbb0fb940
                         continue  # step 값을 유지하고 루프를 반복
                     if key == 0:break 
                     step += 1  # step 증가는 조건을 통과했을 때만
 
             elif move == "D":
-<<<<<<< HEAD
                 while step < steps:
                     key = min(key + 1, num-1)
                     if basket[key] == 'X':
@@ -59,49 +53,53 @@ class Solution(Problem):
                 delete.append(key)
                 if key == num-1:
                     key-=1
-=======
-                # key = min(key + steps, num-1)
-                key = min(key + 1 , num-1)
-                print('key ',key)
-                print('num ',num)
-                print('steps ',steps)
-
-                while step < steps:
-                    key = min(key + 1, num - 1)
-                    # print('step', step)
-
-                    if basket[key] == 'X':
-                        # print('end step')
-                        if key == 0:break 
-                        continue  # step 값을 유지하고 루프를 반복
-                    if key == 0:break 
-                    step += 1  # step 증가는 조건을 통과했을 때만
-
-            elif move == "C":
-                basket[key] = 'X'
-                delete.append(key)
-                if key == num-1:key-=1
-                
-                # if key >= num:
-                #     key -= 1
->>>>>>> 1210bb66daf414bb65aee8cce61da31bbb0fb940
                 num -= 1
 
             elif move == "Z":
                 repair = delete.pop() if delete else None
-<<<<<<< HEAD
-=======
-
-                # addrs.insert(key, repair)
-                print('delete', delete)
-                print('repair', repair)
-                print('basket', basket)
-                print(basket[repair])
->>>>>>> 1210bb66daf414bb65aee8cce61da31bbb0fb940
                 basket[repair] = 'O'
 
         answer = "".join(basket)
         return answer
+    
+
+    def solution(self, n, k, cmd): 
+        basket = set(range(n))  # 삭제되지 않은 인덱스 집합
+        delete = []  # 삭제된 인덱스 스택
+
+
+        print( 'basket', basket)
+        for command in cmd:
+            parts = command.split()
+            move = parts[0]
+
+            if move == "U" or move == "D":
+                steps = int(parts[1])
+                direction = -1 if move == "U" else 1
+
+                while steps > 0:
+                    k += direction
+                    if k in basket:  # 삭제되지 않은 인덱스일 때만 이동
+                        steps -= 1
+
+            elif move == "C":
+                basket.remove(k)  # 현재 인덱스를 삭제
+                delete.append(k)
+
+                # 다음 인덱스로 이동
+                if not basket or k == max(basket):
+                    k = max(basket) if basket else 0
+                else:
+                    k = min(i for i in basket if i > k)
+
+            elif move == "Z":
+                if delete:
+                    basket.add(delete.pop())
+
+        # 결과 문자열 생성
+        result = ["O" if i in basket else "X" for i in range(n)]
+        return "".join(result)
+
 
 # Object creation and method call (객체 생성 및 메서드 호출)
 sol = Solution()
